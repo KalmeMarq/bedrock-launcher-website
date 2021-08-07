@@ -17,10 +17,13 @@ const index = () => {
         </Link>
         <nav className='header-nav'>
           <ul>
-            <NavbarLink goTo='/' icon={<HomeIcon />}>Home</NavbarLink>
-            <NavbarLink goTo='/releases' icon={<FlaskIcon />}>Releases</NavbarLink>
-            <NavbarLink goTo='https://github.com/BedrockLauncher/BedrockLauncher.Installer/releases/latest/download/BedrockLauncher.Installer.exe' icon={<DownloadIcon />}>Download</NavbarLink>
-            <NavbarLink goTo='/faq' icon={<QuestionIcon />}>FAQ</NavbarLink>
+            <NavbarLink goTo='/' icon={<HomeIcon aria-label='home icon' />} label='home'>Home</NavbarLink>
+            <NavbarLink goTo='/releases' icon={<FlaskIcon aria-label='releases icon' />} label='releases'>Releases</NavbarLink>
+            <NavbarLink
+              goTo='https://github.com/BedrockLauncher/BedrockLauncher.Installer/releases/latest/download/BedrockLauncher.Installer.exe'
+              icon={<DownloadIcon aria-label='download icon' />}
+              label='download'>Download</NavbarLink>
+            <NavbarLink goTo='/faq' icon={<QuestionIcon aria-label='faq icon' />} label='faq'>FAQ</NavbarLink>
           </ul>
         </nav>
       </div>

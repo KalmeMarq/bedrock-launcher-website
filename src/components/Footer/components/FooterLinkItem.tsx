@@ -1,9 +1,9 @@
 import { FC } from "react"
 
-const FooterLinkItem: FC<{ goTo: string }> = ({ goTo, children }) => {
+const FooterLinkItem: FC<{ label: string, goTo: string }> = ({ label, goTo, children }) => {
   return (
     <li className='footer-link'>
-      <a href={goTo} rel="noreferrer" target='_blank'>{children}</a>
+      <a aria-label={label} href={goTo} rel="noreferrer" target='_blank'>{children}</a>
     </li>
   )
 }

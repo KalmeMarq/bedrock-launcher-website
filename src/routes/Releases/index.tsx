@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import GithubReleases from "../../util/GitHubReleases"
 import './index.scss'
 import { ReactComponent as TickIcon } from '../../assets/images/icons/tick.svg'
+import FAQDetails from "../../components/FAQDetails"
 
 const ReleasesRoute = () => {
   const [filter, setFilter] = useState('')
@@ -11,17 +12,20 @@ const ReleasesRoute = () => {
   const [betas, setBetas] = useState([] as GithubReleases[])
 
   useEffect(() => {
+    let going = true
     fetch('https://api.github.com/repos/BedrockLauncher/BedrockLauncher-Beta/releases')
     .then(res => res.json())
     .then(data => {
-      setBetas(data)
+      going && setBetas(data)
     })
 
     fetch('https://api.github.com/repos/BedrockLauncher/BedrockLauncher/releases')
     .then(res => res.json())
     .then(data => {
-      setReleases(data)
+      going && setReleases(data)
     })
+
+    return () => { going = false }
   }, [])
   
   return (
@@ -58,11 +62,7 @@ const ReleasesRoute = () => {
           {releases.map(rel => {
             if(showReleases && (filter === '' || rel.name.toLowerCase().includes(filter.toLowerCase()))) {
               return (
-                <details key={rel.id}>
-                  <summary>{rel.name}</summary>
-                  <div className='details-body' dangerouslySetInnerHTML={{__html: rel.body.replaceAll('\r\n', '<br />')}}>
-                  </div>
-                </details>
+                <FAQDetails key={rel.id} title={rel.name} desc={rel.body.replaceAll('\r\n', '<br />')} />
               )
             } else {
               return <></>
@@ -71,11 +71,7 @@ const ReleasesRoute = () => {
           {betas.map(rel => {
              if(showBetas && (filter === '' || rel.name.toLowerCase().includes(filter.toLowerCase()))) {
               return (
-                <details key={rel.id}>
-                  <summary>{rel.name}</summary>
-                  <div className='details-body' dangerouslySetInnerHTML={{__html: rel.body.replaceAll('\r\n', '<br />')}}>
-                  </div>
-                </details>
+                <FAQDetails key={rel.id} title={rel.name} desc={rel.body.replaceAll('\r\n', '<br />')} />
               )
             } else {
               return <></>

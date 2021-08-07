@@ -11,20 +11,20 @@ const index = () => {
         <hr />
         <nav>
           <ul>
-            <FooterLinkItem goTo="https://github.com/BedrockLauncher/BedrockLauncher">
+            <FooterLinkItem label='repo link' goTo="https://github.com/BedrockLauncher/BedrockLauncher">
               Sources
             </FooterLinkItem>
-            <FooterLinkItem goTo="https://github.com/BedrockLauncher/BedrockLauncher/blob/master/LICENSE.txt">
+            <FooterLinkItem label='license link' goTo="https://github.com/BedrockLauncher/BedrockLauncher/blob/master/LICENSE.txt">
               License
             </FooterLinkItem>
-            <FooterLinkItem goTo="https://github.com/BedrockLauncher/BedrockLauncher/releases">
+            <FooterLinkItem label='releases link' goTo="https://github.com/BedrockLauncher/BedrockLauncher/releases">
               Releases
             </FooterLinkItem>
           </ul>
         </nav>
         <div className='footer-cards'>
-          <FooterCardItem link='https://carjem.carrd.co/'icon={carjem} title='Carjem' description='Creator of Bedrock Launcher' />
-          <FooterCardItem link='https://coolabhi1290.github.io/' icon={coolAbhi} title='CoolAbhi1290' description="Creator of Bedrock Launcher's Website" />
+          <FooterCardItem label='Carjem' link='https://carjem.carrd.co/'icon={carjem} title='Carjem' description='Creator of Bedrock Launcher' />
+          <FooterCardItem label='CoolAbhi1290' link='https://coolabhi1290.github.io/' icon={coolAbhi} title='CoolAbhi1290' description="Creator of Bedrock Launcher's Website" />
         </div>
         <span className='copyright'>&#169; Not associated or approved by Mojang</span>
       </div>
