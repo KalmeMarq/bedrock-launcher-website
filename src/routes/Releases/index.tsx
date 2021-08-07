@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import GithubReleases from "../../util/GitHubReleases"
 import './index.scss'
 import { ReactComponent as TickIcon } from '../../assets/images/icons/tick.svg'
-import FAQDetails from "../../components/FAQDetails"
+import Accordion from "../../components/Accordion"
 
 const ReleasesRoute = () => {
   const [filter, setFilter] = useState('')
@@ -62,7 +62,7 @@ const ReleasesRoute = () => {
           {releases.map(rel => {
             if(showReleases && (filter === '' || rel.name.toLowerCase().includes(filter.toLowerCase()))) {
               return (
-                <FAQDetails key={rel.id} title={rel.name} desc={rel.body.replaceAll('\r\n', '<br />')} />
+                <Accordion key={rel.id} title={rel.name} desc={rel.body.replaceAll('\r\n', '<br />')} />
               )
             } else {
               return <></>
@@ -71,7 +71,7 @@ const ReleasesRoute = () => {
           {betas.map(rel => {
              if(showBetas && (filter === '' || rel.name.toLowerCase().includes(filter.toLowerCase()))) {
               return (
-                <FAQDetails key={rel.id} title={rel.name} desc={rel.body.replaceAll('\r\n', '<br />')} />
+                <Accordion key={rel.id} title={rel.name} desc={rel.body.replaceAll('\r\n', '<br />')} />
               )
             } else {
               return <></>

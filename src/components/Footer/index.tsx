@@ -8,7 +8,6 @@ const index = () => {
   return (
     <div className='footer'>
       <div className='container'>
-        <hr />
         <nav>
           <ul>
             <FooterLinkItem label='repo link' goTo="https://github.com/BedrockLauncher/BedrockLauncher">
@@ -26,7 +25,7 @@ const index = () => {
           <FooterCardItem label='Carjem' link='https://carjem.carrd.co/'icon={carjem} title='Carjem' description='Creator of Bedrock Launcher' />
           <FooterCardItem label='CoolAbhi1290' link='https://coolabhi1290.github.io/' icon={coolAbhi} title='CoolAbhi1290' description="Creator of Bedrock Launcher's Website" />
         </div>
-        <span className='copyright'>&#169; Not associated or approved by Mojang</span>
+        <span className='copyright'>Carjem 2021 &#169; Not associated or approved by Mojang</span>
       </div>
     </div>
   )

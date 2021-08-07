@@ -117,4 +117,98 @@
       gap: 1rem;
     }
   }
+
+  hr {
+    border-color: rgb(146, 146, 146);
+    margin: 1rem 0;
+  }
+}
+
+.cat-selection {
+  display: grid;
+  width: 100%;
+  row-gap: 1rem;
+
+  .cat-link {
+    // border-radius: 6px;
+    box-sizing: content-box;
+    box-shadow: 0 3px 0 #00000050;
+    padding: 1rem 1rem;
+    display: flex;
+    place-content: center;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    border: 1px solid transparent;
+    border-bottom: 1px solid #00000050;
+    text-decoration: none;
+
+    &:hover {
+      img {
+        filter: brightness(40%);
+      }
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      border: 1px solid white;
+    }
+
+    h4 {
+      font-family: 'MinecraftFive';
+      color: white;
+      font-size: 1.1rem;
+      text-shadow: 0 4px 0 #00000069;
+    }
+
+    p {
+      color: white;
+    }
+
+    img {
+      top: 0;
+      position: absolute;
+      left: 0;
+      z-index: -1;
+      transform: translate(0, -40%);
+      transition: filter 150ms ease;
+      filter: brightness(60%);
+      width: 100%;
+      // height: 100%;
+    }
+  }
+}
+
+.go-back {
+  display: flex;
+  flex-direction: row;
+  place-items: center;
+  width: max-content;
+  color: white;
+  column-gap: 0.5rem;
+  font-family: 'MinecraftFive';
+  text-decoration: none;
+  font-size: 1.125rem;
+  margin-top: -20px;
+  margin-bottom: 15px;
+
+  svg {
+    height: fit-content;
+  }
+
+  &:hover {
+    filter: brightness(80%);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    text-decoration: underline;
+  }
 }

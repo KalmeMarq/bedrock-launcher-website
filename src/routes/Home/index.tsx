@@ -27,7 +27,7 @@ const Home = () => {
   return (
     <>
       <div className='main-section' ref={divRref} style={{backgroundImage: 'url(' + Covers[cover].replaceAll('%PUBLIC_PATH%', process.env.PUBLIC_URL) + ')'}}>
-        <img src={logo} alt="" className='logo' tabIndex={0} role="document" />
+        <img src={logo} alt="" className='logo' />
         <h3>An unofficial Minecraft Bedrock for Windows 10 Launcher</h3>
       
         <div className='buttons-group0'>
