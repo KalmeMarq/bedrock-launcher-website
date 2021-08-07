@@ -11,7 +11,9 @@ const NavbarLink: FC<{ icon: any, goTo: string, label: string }> = ({ label, goT
             <span>{children}</span>
           </a>
         ) : (
-          <Link to={goTo} className='navbar-link-cont' aria-label={label}>
+          <Link to={goTo} className='navbar-link-cont' aria-label={label} onClick={() => {
+            window.scroll(0, 0)
+          }}>
             {icon}
             <span>{children}</span>
           </Link>
