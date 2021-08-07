@@ -12,11 +12,75 @@ code {
     monospace;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+}
+
 @font-face {
   font-family: 'Minecraft';
   src: url(./assets/fonts/Minecraft.ttf);
 }
 
-h1 {
-  font-family: 'Minecraft';
+@font-face {
+  font-family: 'MinecraftFive';
+  src: url(./assets/fonts/MinecraftFive-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'MinecraftFiveBold';
+  src: url(./assets/fonts/MinecraftFive-Bold.ttf);
+}
+
+@font-face {
+  font-family: 'MinecraftTen';
+  src: url(./assets/fonts/MinecraftTen.ttf);
+}
+
+* {
+  scrollbar-color: #474747 #292929;
+}
+
+::-webkit-scrollbar {
+  background: #292929;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #474747;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #505050;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #838383;
+}
+
+.container {
+  width: 90%;
+  max-width: 1050px;
+  margin: auto;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  min-height: 100vh;
+  background-color: #262626;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  /* height: 100%; */
+  /* min-height: 100%; */
+  /* max-height: max-content; */
 }
