@@ -49,7 +49,7 @@ const Home = () => {
           </ButtonText>
         </div>
         <div className='buttons-group1'>
-          <ButtonText type='link' content='icon' to='https://www.paypal.com/donate/?cmd=_donations&business=RNZMRCMNX3SJY&currency_code=USD&source=url' rel="noreferrer" target='_blank' width={40}>
+          <ButtonText type='link' content='icon' to='https://twitter.com/carter5467_99' rel="noreferrer" target='_blank' width={40}>
             <TwitterIcon aria-label='twitter-icon' />
           </ButtonText>
           <ButtonText type='link' content='icon' to='https://www.youtube.com/channel/UC4-VHCZD7eLdxRr5aUXAQ5w' rel="noreferrer" target='_blank' width={40}>
