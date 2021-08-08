@@ -5,6 +5,33 @@ export interface IFAQItem {
   body: string
 }
 
+export const FAQCategories = [
+  { 
+    name: 'versions',
+    title: 'Versions FAQ',
+    description: "Can't find what you're looking for, try looking here.",
+    img: '%PUBLIC_PATH%/images/banners/other_early_console_era.jpg'
+  },
+  {
+    name: 'data',
+    title: 'Data FAQ',
+    description: "Issues with your Minecraft worlds, settings, etc?",
+    img: '%PUBLIC_PATH%/images/banners/1.13_technically_updated_java.jpg'
+  },
+  {
+    name: 'accounts',
+    title: 'Accounts FAQ',
+    description: "Questions about managing Minecraft accounts?",
+    img: '%PUBLIC_PATH%/images/banners/1.09_combat_update_java.jpg'
+  },
+  {
+    name: 'misc',
+    title: 'Miscellaneous FAQ',
+    description: "Issues with your Minecraft worlds, settings, etc?",
+    img: '%PUBLIC_PATH%/images/banners/1.08_cats_and_pandas.jpg'
+  }
+]
+
 const FAQs: IFAQItem[] = [
   {
     id: 'faq-b751e93b',

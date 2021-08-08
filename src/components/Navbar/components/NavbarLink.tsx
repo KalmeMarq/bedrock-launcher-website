@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 const NavbarLink: FC<{ icon: any, goTo: string, label: string }> = ({ label, goTo, icon, children }) => {
   return (
-    <li className='navbar-link'>
+    <li className='navbar-link pc-link'>
       {
         goTo.startsWith('http') ? (
           <a href={goTo} className='navbar-link-cont' aria-label={label}>
@@ -14,7 +14,7 @@ const NavbarLink: FC<{ icon: any, goTo: string, label: string }> = ({ label, goT
           <Link to={goTo} className='navbar-link-cont' aria-label={label} onClick={() => {
             window.scroll(0, 0)
           }}>
-            {icon}
+            {typeof icon === 'string' ? <img src={icon} alt='' /> : icon}
             <span>{children}</span>
           </Link>
         )

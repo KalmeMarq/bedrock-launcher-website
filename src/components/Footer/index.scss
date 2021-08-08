@@ -9,16 +9,22 @@
   }
 
   nav {
+    width: 100%;
+    display: flex;
     padding: 1rem 0 0 0;
+    place-content: center;
+    place-items: center;
   }
 
   ul {
+    width: 100%;
     list-style-type: none;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 
     place-content: center;
+    place-items: center;
   }
 
   .footer-link {
@@ -49,6 +55,7 @@
   .footer-card-item {
     text-align: center;
     padding: 1rem 1.6rem;
+    max-width: 250px;
 
     p {
       color: white;

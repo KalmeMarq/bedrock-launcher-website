@@ -1,9 +1,10 @@
 .navbar {
   background: #262626;
   width: 100%;
-  height: 54px;
+  height: 50px;
   position: fixed;
   z-index: 100;
+  padding-top: 2px;
   box-shadow: 0 2px 4px #00000077;
 
   .container {
@@ -33,6 +34,8 @@
     place-content: center;
     font-size: 1.1rem;
     place-items: center;
+    font-weight: 100;
+    font-style: normal;
 
     &:hover {
       color: rgb(190, 190, 190);
@@ -53,50 +56,183 @@
       flex-direction: row;
       height: 100%;
     }
+  }
+}
 
-    .navbar-link {
-      height: 100%;
-      display: flex;
-      place-items: center;
+.navbar-link {
+  height: 100%;
+  display: flex;
+  place-items: center;
 
-      svg {
-        width: 32px;
-        height: 32px;
-        margin-right: 0.3rem;
+  svg, img {
+    width: 32px;
+    height: 32px;
+  }
+
+  img {
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+  }
+}
+
+.searchsidebar {
+  position: absolute;
+  background: #262626;
+  transform: translate(200%);
+  top: 50px;
+  right: 0;
+  display: none;
+  width: 600px;
+  height: calc(100vh - 50px);
+  transition: transform 200ms ease;
+  z-index: -1;
+
+  .container {
+    display: flex;
+    height: max-content;
+    padding: 1rem 0;
+  }
+
+  &.open {
+    display: block;
+    transform: unset;
+  }
+
+  input {
+    width: 100%;
+    height: 40px;
+    background: #161616;
+    border: 1px solid #161616;
+    padding: 0 1rem;
+  }
+}
+
+.cancel-icon {
+  transform: scale(0.8);
+}
+
+.sidebar {
+  position: absolute;
+  display: none;
+  background: #262626;
+  transform: translate(100%);
+  top: 50px;
+  width: 600px;
+  height: calc(100vh - 50px);
+  transition: transform 200ms ease;
+  z-index: -1;
+
+  .container {
+    display: flex;
+    height: max-content;
+    padding: 1rem 0;
+  }
+
+  &.open {
+    display: block;
+    animation: aaab 200ms ease forwards;
+  }
+}
+
+@keyframes aaab {
+  0% { transform: translate(100%); }
+  10% { transform: translate(100%); }
+  100% { transform: translate(0); }
+}
+
+@keyframes aabb {
+  0% { transform: translate(0); }
+  10% { transform: translate(0); }
+  100% { transform: translate(100%); }
+}
+
+.navbar-link-cont {
+  display: block;
+  color: white;
+  padding: 0.2rem 0.6rem;
+  height: 100%;
+  text-decoration: none;
+  font-family: 'Minecraft';
+  display: flex;
+  place-items: center;
+  border: 1px solid transparent;
+  border-radius: 0;
+
+  &:hover {
+    background: hsla(0, 0%, 100%, 0.2);
+    span {
+      font-size: 1rem;
+      margin-left: 0.3rem;
+    }
+  }
+
+  span {
+    transition: font 300ms, margin 300ms;
+    font-size: 0;
+    margin-left: 0;
+  }
+
+  &:focus-visible {
+    outline: none;
+    border: 1px solid white;
+    span {
+      font-size: 1rem;
+      margin-left: 0.3rem;
+    }
+  }
+}
+
+.hamburger-btn,
+.search-btn {
+  display: flex;
+  place-items: center;
+  place-content: center;
+  background: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  padding: 0.2rem 0.6rem;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    border-color: white;
+  }
+  
+  svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  &:hover {
+    background: #ffffff33;
+  }
+}
+
+.hamburger-btn {
+  display: none;
+}
+
+@media screen and (max-width: 900px) {
+  .hamburger-btn {
+    display: flex;
+  }
+
+  .navbar-link {
+    display: none;
+  }
+
+  .navbar-link-cont {
+    &:hover {
+      span {
+        display: none;  
       }
+    }
 
-      .navbar-link-cont {
-        display: block;
-        color: white;
-        padding: 0.2rem 0.6rem;
-        height: 100%;
-        text-decoration: none;
-        font-family: 'Minecraft';
-        display: flex;
-        place-items: center;
-        border: 1px solid transparent;
-        border-radius: 0;
-
-        &:hover {
-          background: hsla(0, 0%, 100%, 0.2);
-          span {
-            font-size: 1rem;
-          }
-        }
-
-        &:focus-visible {
-          outline: none;
-          border: 1px solid white;
-
-          span {
-            font-size: 1rem;
-          }
-        }
-
-        span {
-          transition: font 300ms;
-          font-size: 0;
-        }
+    &:focus-visible {
+      span {
+        display: none;  
       }
     }
   }

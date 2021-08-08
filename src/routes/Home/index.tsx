@@ -7,11 +7,18 @@ import { ReactComponent as YoutubeIcon } from '../../assets/images/icons/youtube
 import { ReactComponent as DiscordIcon } from '../../assets/images/icons/discord.svg'
 import ShowSections from '../../util/ShowSections'
 import Covers from '../../util/Covers'
+import ButtonText from '../../components/ButtonText'
 
 const Home = () => {
   const divRref = useRef<HTMLDivElement>(null);
   const [cover, setCover] = useState(Math.round(Math.random() * (Covers.length - 1)))
   
+  document.title = 'Home - Bedrock Launcher'
+
+  Covers.forEach(c => {
+    new Image().src = c.replaceAll('%PUBLIC_PATH%', process.env.PUBLIC_URL)
+  })
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCover((cover + 1) % (Covers.length - 1))
@@ -31,20 +38,26 @@ const Home = () => {
         <h3>An unofficial Minecraft Bedrock for Windows 10 Launcher</h3>
       
         <div className='buttons-group0'>
-          <a style={{ width: 160 }} href='https://github.com/BedrockLauncher/BedrockLauncher.Installer/releases/latest/download/BedrockLauncher.Installer.exe' className='button-text'>Download</a>
-          <a style={{ width: 160 }} href='https://github.com/BedrockLauncher/BedrockLauncher' className='button-text'>Source</a>
-          <a style={{ width: 160 }} href='https://www.paypal.com/donate/?cmd=_donations&business=RNZMRCMNX3SJY&currency_code=USD&source=url' className='button-text'>Donate</a>
+          <ButtonText type='link' to='https://github.com/BedrockLauncher/BedrockLauncher.Installer/releases/latest/download/BedrockLauncher.Installer.exe' rel="noreferrer" target='_blank' width={160}>
+            Download
+          </ButtonText>
+          <ButtonText type='link' to='https://github.com/BedrockLauncher/BedrockLauncher' rel="noreferrer" target='_blank'  width={160}>
+            Source
+          </ButtonText>
+          <ButtonText type='link' to='https://www.paypal.com/donate/?cmd=_donations&business=RNZMRCMNX3SJY&currency_code=USD&source=url' rel="noreferrer" target='_blank'  width={160}>
+            Donate
+          </ButtonText>
         </div>
         <div className='buttons-group1'>
-          <a href='https://twitter.com/carter5467_99' aria-label='twitter' rel="noreferrer" target='_blank' className='button-text social'>
+          <ButtonText type='link' content='icon' to='https://www.paypal.com/donate/?cmd=_donations&business=RNZMRCMNX3SJY&currency_code=USD&source=url' rel="noreferrer" target='_blank' width={40}>
             <TwitterIcon aria-label='twitter-icon' />
-          </a>
-          <a href='https://www.youtube.com/channel/UC4-VHCZD7eLdxRr5aUXAQ5w' aria-label='youtube' rel="noreferrer" target='_blank' className='button-text social'>
+          </ButtonText>
+          <ButtonText type='link' content='icon' to='https://www.youtube.com/channel/UC4-VHCZD7eLdxRr5aUXAQ5w' rel="noreferrer" target='_blank' width={40}>
             <YoutubeIcon aria-label='youtube-icon' />
-          </a>
-          <a href='/' className='button-text social disabled' aria-label='discord' aria-disabled="true">
+          </ButtonText>
+          <ButtonText type='link' content='icon' to='/' rel="noreferrer" target='_blank' width={40}>
             <DiscordIcon aria-label='discord-icon' />
-          </a>
+          </ButtonText>
         </div>
         <div className='arrow-scroll'>
           <Arrow className='arrow-down' onClick={handleScrollDown} />
@@ -90,9 +103,9 @@ const Home = () => {
               )
             }
           })}
-          <a aria-label='repo link' style={{width: 'max-content'}} href="https://github.com/BedrockLauncher/BedrockLauncher" target='_blank' rel="noreferrer" className='button-text being-built'>
+          <ButtonText to="https://github.com/BedrockLauncher/BedrockLauncher" target='_blank' rel="noreferrer" label='repo link' className='being-built'>
             What's being built?
-          </a>
+          </ButtonText>
         </div>
       </main>
     </>

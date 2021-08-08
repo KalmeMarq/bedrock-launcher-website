@@ -10,6 +10,9 @@ const index = () => {
       <div className='container'>
         <nav>
           <ul>
+            <FooterLinkItem label='credits' goTo="/credits">
+              Credits
+            </FooterLinkItem>
             <FooterLinkItem label='repo link' goTo="https://github.com/BedrockLauncher/BedrockLauncher">
               Sources
             </FooterLinkItem>

@@ -25,13 +25,17 @@
     font-family: 'Minecraft';
     text-shadow: 0 2.5px 0 #000000;
     color: white;
-    font-size: 1.05rem;
+    word-spacing: 5px;
+    font-size: 1.1rem;
     width: 85%;
+    font-weight: 100;
+    font-style: normal;
   }
 
   .logo {
     max-width: 660px; 
     width: 660px;
+    margin-bottom: 1.8rem;
   }
 
   .buttons-group0,
@@ -42,7 +46,7 @@
     row-gap: 1rem;
     place-content: center;
     flex-wrap: wrap;
-    padding: 1.2rem 0;
+    padding: 1.9rem 0;
   }
 
   .buttons-group1 {
@@ -80,7 +84,7 @@
   text-decoration: none;
   display: block;
   cursor: pointer;
-  background: #008f46;
+  background: linear-gradient(#009147, #008542);
   border: 0;
   font-family: 'MinecraftTen';
   color: white;
@@ -90,31 +94,33 @@
   display: flex;
   place-content: center;
   place-items: center;
+  font-weight: 100;
+  font-style: normal;
 
-  text-shadow: 0 2px 0 #00000042;
+  text-shadow: 0 3px 0 #00000042;
   --border: #000;
   --top-border: #27ce40;
   --bottom-border: #064d2a;
 
   box-shadow: 
-    0px -2px 0 0 var(--top-border),
-    0px 2px 0 0 var(--bottom-border),
-    -2px 0px 0 0#0c6e3d,
-    2px 0px 0 0#0c6e3d,
+    0px -3px 0 0 var(--top-border),
+    0px 3px 0 0 var(--bottom-border),
+    -3px 0px 0 0#0c6e3d,
+    3px 0px 0 0#0c6e3d,
 
-    -2px -4px 0 0 var(--border),
-    2px -4px 0 0 var(--border),
-    -4px -2px 0 0 var(--border),
-    4px -2px 0 0 var(--border),
+    -2px -5px 0 0 var(--border),
+    2px -5px 0 0 var(--border),
+    -5px -2px 0 0 var(--border),
+    5px -2px 0 0 var(--border),
 
-    -2px 4px 0 0 var(--border),
-    2px 4px 0 0 var(--border),
-    -4px 2px 0 0 var(--border),
-    4px 2px 0 0 var(--border),
+    -2px 5px 0 0 var(--border),
+    2px 5px 0 0 var(--border),
+    -5px 2px 0 0 var(--border),
+    5px 2px 0 0 var(--border),
   ;
 
   &:hover {
-    background: #00a14e;
+    background: linear-gradient(#0a9a50, #0a8f4c);
   }
 
   &:active {
@@ -129,8 +135,24 @@
   }
 
   &.social {
+    display: flex;
+    place-content: center;
+    place-items: center;
     width: 40px;
-    padding: 0.4rem;
+    padding: 0.3rem;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &.button-icon {
+    display: flex;
+    place-content: center;
+    place-items: center;
+    width: 40px;
+    padding: 0.3rem;
 
     svg {
       width: 100%;
@@ -148,7 +170,7 @@
   .main-section {
     .logo {
       max-width: 660px; 
-      width: 85%;
+      width: 70%;
     }
 
     .buttons-group0,
@@ -203,6 +225,8 @@
         color: white;
         font-size: 1.8rem;
         text-shadow: 0 3px 0 #000000;
+        font-weight: 100;
+        font-style: normal;
       }
 
       p {

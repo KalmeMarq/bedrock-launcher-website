@@ -1,13 +1,15 @@
 .faqdetails {
   // min-height: 40px;
   border: 1px solid rgb(94, 94, 94);
-  transition: height 200ms ease;
 
   .faqdetails-content {
     display: none;
     padding: 1rem;
     color: white;
     animation: sweep .2s ease;
+    transition: max-height 100ms ease;
+    overflow: hidden;
+    max-height: 0;
 
     img {
       max-width: 100%;
@@ -28,10 +30,10 @@
     }
 
     a {
-      color: white;
+      color: hsl(119, 65%, 40%);
 
       &:hover {
-        color: rgb(165, 165, 165);
+        color: hsl(119, 65%, 30%)
       }
 
       &:focus-visible {
@@ -52,11 +54,18 @@
     }
   }
 
-  &.open {
+  &.open-semi {
     height: initial;
 
     .faqdetails-content {
       display: block;
+    }
+  }
+
+  &.open {
+    .faqdetails-content {
+      max-height: max-content;
+      transition: max-height 1000ms ease-in;
     }
   }
   
