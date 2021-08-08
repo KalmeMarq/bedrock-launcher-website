@@ -1,27 +1,32 @@
 import { KeyboardEvent } from "react"
 import { FC, useState } from "react"
+import { Converter } from "showdown"
 import { ReactComponent as DownArrow } from '../../assets/images/icons/down-arrow.svg'
 import './index.scss'
 
-const FAQDetails: FC<{ title: string, desc: string }> = ({ title, desc }) => {
+function replaceURLs(message: string) {
+  var urlRegex = /(((https?:\/\/)|(www\.))[^\s]+)/g;
+  return message.replace(urlRegex, function(url: string) {
+    var hyperlink = url;
+    if (!hyperlink.match('^https?://')) {
+      hyperlink = 'http://' + hyperlink;
+    }
+    hyperlink = hyperlink.replace('</li>', '')
+
+    return '<a href="' + hyperlink + '" target="_blank" rel="noopener noreferrer">' + hyperlink + '</a>'
+  })
+}
+
+const FAQDetails: FC<{ title: string, desc: string, githubURL?: string, usesMD?: boolean }> = ({ title, desc, githubURL, usesMD }) => {
   const [open, setOpen] = useState(false)
   const [openSemi, setOpenSemi] = useState(false)
-  const [dheight, setDHeight] = useState(0)
+  const [descr] = useState(desc.replaceAll('%PUBLIC_PATH%', process.env.PUBLIC_URL))
 
-  const calcHeight = (el: any) => {
-    let height = el.offsetHeight
-    setDHeight(height)
-  }
+  let markdownConverter = new Converter()
 
   const handleOpen = (el: any) => {
     setOpenSemi(!openSemi)
-    calcHeight(el)
-    if(open) {
-      setDHeight(0)
-    }
-    setTimeout(() => {
-      setOpen(!open)
-    }, 0)
+    setOpen(!open)
   }
 
   const handleKeyDown = (e: KeyboardEvent) => {
@@ -34,7 +39,10 @@ const FAQDetails: FC<{ title: string, desc: string }> = ({ title, desc }) => {
   return (
     <div className={'faqdetails'  + (openSemi ? ' open-semi' : '') + (open ? ' open' : '')}>
       <div className='faqdetails-header' tabIndex={0} onClick={handleOpen} onKeyDown={handleKeyDown}><span><DownArrow /></span>{title}</div>
-      <div className='faqdetails-content' style={{ maxHeight: dheight }} dangerouslySetInnerHTML={{__html: desc.replaceAll('%PUBLIC_PATH%', process.env.PUBLIC_URL)}}></div>
+      <div className={'faqdetails-content' + (usesMD ? ' md' : '')}>
+        <div dangerouslySetInnerHTML={{__html: usesMD ? replaceURLs(markdownConverter.makeHtml(descr)) : replaceURLs(descr)}}></div>
+        {githubURL && <a className='github-link' href={githubURL} target='_blank' rel="noreferrer">View on Github</a>}
+      </div>
     </div>
   )
 }

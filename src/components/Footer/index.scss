@@ -97,8 +97,13 @@
     }
   }
 
-  span.copyright {
+  a.copyright {
     color: hsl(0, 0%, 60%);
     font-size: 1rem;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }

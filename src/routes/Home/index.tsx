@@ -55,7 +55,7 @@ const Home = () => {
           <ButtonText type='link' content='icon' to='https://www.youtube.com/channel/UC4-VHCZD7eLdxRr5aUXAQ5w' rel="noreferrer" target='_blank' width={40}>
             <YoutubeIcon aria-label='youtube-icon' />
           </ButtonText>
-          <ButtonText type='link' content='icon' to='/' rel="noreferrer" target='_blank' width={40}>
+          <ButtonText type='button' content='icon' disabled width={40}>
             <DiscordIcon aria-label='discord-icon' />
           </ButtonText>
         </div>

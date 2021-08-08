@@ -50,6 +50,7 @@ code {
 
 ::-webkit-scrollbar {
   background: #292929;
+  width: 12px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -81,7 +82,27 @@ body {
 #root {
   display: flex;
   flex-direction: column;
-  /* height: 100%; */
-  /* min-height: 100%; */
-  /* max-height: max-content; */
+}
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  place-content: center;
+  gap: 0 2.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.pagination .button-text {
+  width: 38px;
+  max-width: 38px;
+  height: 38px;
+  max-height: 38px;
+}
+
+.pagination .pages-numbers {
+  display: flex;
+  flex-direction: row;
+  place-content: center;
+  gap: 0 0.8rem;
+  width: max-content;
 }

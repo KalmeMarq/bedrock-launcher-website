@@ -1,4 +1,5 @@
 import { FC } from "react"
+import { Link } from "react-router-dom"
 
 interface IButtonText {
   type?: 'button' | 'link' | 'route-link',
@@ -18,15 +19,21 @@ const ButtonText: FC<IButtonText> = ({ content, width, type, label, to, children
     <>
       { type === 'button'
         ? (
-          <button aria-disabled={disabled ? 'true' : 'false'} className={'button-text' + (disabled ? ' disabled' : '') + ((content ?? 'text') === 'icon' ? ' button-icon' : '') + ' ' + (className ?? '')} aria-label={label} onClick={onClick} style={{ width: width ?? 'max-content' }}>
+          <button disabled={disabled} aria-disabled={disabled ? 'true' : 'false'} className={'button-text' + (disabled ? ' disabled' : '') + ((content ?? 'text') === 'icon' ? ' button-icon' : '') + ' ' + (className ?? '')} aria-label={label} onClick={onClick} style={{ width: width ?? 'max-content' }}>
             {children}
           </button> 
         )
-        : (
-          <a href={to} className={'button-text' + ((content ?? 'text') === 'icon' ? ' button-icon' : '') + ' ' + (className ?? '')} rel={rel} target={target} aria-label={label} onClick={onClick} style={{ width: width ?? 'max-content' }}>
-            {children}
-          </a> 
-        )
+        : type === 'route-link'
+          ? (
+            <Link to={to ?? '/'} className={'button-text' + ((content ?? 'text') === 'icon' ? ' button-icon' : '') + ' ' + (className ?? '')} rel={rel} target={target} aria-label={label} onClick={onClick} style={{ width: width ?? 'max-content' }}>
+              {children}
+            </Link> 
+          )
+          : (
+            <a href={to} className={'button-text' + ((content ?? 'text') === 'icon' ? ' button-icon' : '') + ' ' + (className ?? '')} rel={rel} target={target} aria-label={label} onClick={onClick} style={{ width: width ?? 'max-content' }}>
+              {children}
+            </a> 
+          )
       }
     </>
   )

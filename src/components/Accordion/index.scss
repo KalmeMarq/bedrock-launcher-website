@@ -119,4 +119,26 @@
       border: 1px solid white;
     }
   }
+  
+  a {
+    color: hsl(119, 65%, 45%);
+    text-decoration: none;
+
+    &:hover {
+      color: hsl(119, 65%, 35%);
+    }
+  }
+
+  .github-link {
+    display: block;
+    width: max-content;
+    margin: 1rem 0 0 0;
+    text-decoration: none;
+  }
+
+  .faqdetails-content.md {
+    ul {
+      margin-left: 1.2rem;
+    }
+  } 
 }

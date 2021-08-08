@@ -15,7 +15,6 @@ import { useEffect, useRef, useState } from 'react'
 const Navbar = () => {
   const [navOpen, setNavOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
-  const [searchClosing, setSearchClosing] = useState(false)
 
   const nref = useRef<HTMLDivElement>(null)
   const sref = useRef<HTMLDivElement>(null)
@@ -37,7 +36,7 @@ const Navbar = () => {
       }
 
       if(navOpen && sref.current !== null) {
-        if(!sref.current!.contains(e.target)) setNavOpen(false)
+        if(!nref.current!.contains(e.target)) setNavOpen(false)
       }
     }
 
@@ -45,7 +44,7 @@ const Navbar = () => {
     return () => {
       document.removeEventListener("mousedown", checkIfClickedOutside)
     }
-  }, [searchOpen])
+  }, [searchOpen, navOpen])
 
   return (
     <header className='navbar'>
@@ -66,7 +65,7 @@ const Navbar = () => {
               label='download'>Download
             </NavbarLink>
             
-            <button className='search-btn' onClick={handleSearch}>
+            <button className='search-btn' disabled onClick={handleSearch}>
               {!searchOpen ? <SearchIcon /> : <CancelIcon className='cancel-icon' />}
             </button>
             <button className='hamburger-btn' onClick={handleSideBarOpen}>
@@ -82,9 +81,44 @@ const Navbar = () => {
             </div>
             <div className={'sidebar' + (navOpen ? ' open' : '')} ref={nref}>
               <div className="container">
-                <h3>Categories</h3>
-                <h3>Docs</h3>
-                <h3>Others</h3>
+                <nav>
+                  <h3>Categories</h3>
+                  <h4>FAQ</h4>
+                  <ul>
+                    <li><Link to="/faq" onClick={handleSideBarOpen}>FAQ</Link></li>
+                    <li><Link to='/faq/data' onClick={handleSideBarOpen}>Data FAQ</Link></li>
+                    <li><Link to='/faq/accounts' onClick={handleSideBarOpen}>Accounts FAQ</Link></li>
+                    <li><Link to='/faq/versions' onClick={handleSideBarOpen}>Versions FAQ</Link></li>
+                    <li><Link to='/faq/misc' onClick={handleSideBarOpen}>Miscellaneous FAQ</Link></li>
+                  </ul>
+                  <h4>Releases</h4>
+                  <ul>
+                    <li><Link to="/releases" onClick={handleSideBarOpen}>Releases</Link></li>
+                    <li><Link to='/releases/public' onClick={handleSideBarOpen}>Public Releases</Link></li>
+                    <li><Link to='/releases/beta' onClick={handleSideBarOpen}>Beta Releases</Link></li>
+                  </ul>
+                  <h3>Docs</h3>
+                  <h4>Dev Info</h4>
+                  <ul>
+                    <li><a target='_blank' rel="noreferrer" href='https://github.com/BedrockLauncher/BedrockLauncher/' onClick={handleSideBarOpen}>Launcher Source</a></li>
+                    <li><a target='_blank' rel="noreferrer" href='https://github.com/KalmeMarq/bedrock-launcher-website' onClick={handleSideBarOpen}>Website Source</a></li>
+                    <li><Link to='/docs/dev/compiling' onClick={handleSideBarOpen}>Compiling</Link></li>
+                    <li><Link to='/docs/dev/contributing' onClick={handleSideBarOpen}>Contributing</Link></li>
+                    <li><Link to='/docs/dev/dev-software-prerequisites' onClick={handleSideBarOpen}>Dev Software Pprerequisites</Link></li>
+                    <li><Link to='/docs/dev/software-prerequisites' onClick={handleSideBarOpen}>Software Pprerequisites</Link></li>
+                    <li><Link to='/docs/dev/hardware-prerequisites' onClick={handleSideBarOpen}>Hardware Pprerequisites</Link></li>
+                  </ul>
+                  <h4>Legal</h4>
+                  <ul>
+                    <li><Link to='/docs/legal/code-of-conduct' onClick={handleSideBarOpen}>Code of Conduct</Link></li>
+                    <li><Link to='/docs/legal/disclaimers' onClick={handleSideBarOpen}>Disclaimers</Link></li>
+                    <li><Link to='/docs/legal/license' onClick={handleSideBarOpen}>License</Link></li>
+                  </ul>
+                  <h3>Others</h3>
+                  <ul>
+                  <li><a rel="noreferrer" href='https://github.com/BedrockLauncher/BedrockLauncher.Installer/releases/latest/download/BedrockLauncher.Installer.exe' target='_blank'>Download Launcher</a></li>
+                  </ul>
+                </nav>
               </div>
             </div>
           </ul>

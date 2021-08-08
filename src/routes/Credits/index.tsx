@@ -59,9 +59,9 @@ const CreditsRoute = () => {
           </ul>
           <h2>GitHub Contributors</h2>
           <ul>
-            {githubContribs.map(contrib => {
-              return <CreditsCardItem key={contrib.id} url={contrib.url} name={contrib.name} icon={contrib.icon} />
-            })}
+            {githubContribs.map(contrib =>
+              <CreditsCardItem key={contrib.id} url={contrib.url} name={contrib.name} icon={contrib.icon} />
+            )}
           </ul>
           <h2>Other Helpers</h2>
           <ul>

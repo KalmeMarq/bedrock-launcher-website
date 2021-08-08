@@ -1,33 +1,36 @@
-import { useEffect, useState } from 'react'
+import { useState, useContext } from 'react'
 import { useHistory, useParams } from 'react-router'
 import Accordion from '../../../components/Accordion'
-import GithubReleases from '../../../util/GitHubReleases'
 import '../index.scss'
 import { ReleasesCategories } from '../../../util/Releases'
 import GoBack from '../../../components/GoBack'
+import { ReleasesContext } from '..'
+import ButtonText from '../../../components/ButtonText'
+import { useEffect } from 'react'
 
 const ReleasesCategory = () => {
   const history = useHistory()
   const { category } = useParams<{ category: string }>()
-  const [releases, setReleases] = useState([] as GithubReleases[])
   const categoryInfo = ReleasesCategories.find(rel => rel.name === category)
   if(!categoryInfo) history.push('/releases')
-  else {
-    document.title = (categoryInfo.title ?? '') + ' - Bedrock Launcher'
-  }
+  else { document.title = (categoryInfo.title ?? '') + ' - Bedrock Launcher' }
+  const releases = useContext(ReleasesContext)
+
+  const perPage = 10
+  const [totalPages, setTotalPages] = useState(Math.ceil(releases[categoryInfo?.name ?? 'public'].length / perPage))
+  const [pageIndex, setPageIndex] = useState(0)
 
   useEffect(() => {
-    let going = true
-    if(category !== 'beta' && category !== 'public') return () => { going = false }
+    setTotalPages(Math.ceil(releases[categoryInfo?.name ?? 'public'].length / perPage))
+  }, [releases, categoryInfo])
 
-    fetch('https://api.github.com/repos/BedrockLauncher/BedrockLauncher' + (category === 'beta' ? '-Beta' : '') + '/releases')
-    .then(res => res.json())
-    .then(data => {
-      going && setReleases(data)
-    })
+  const handlePageChange = (action: number) => {
+    setPageIndex((pageIndex + action) % (totalPages))
+  }
 
-    return () => { going = false }
-  })
+  const handlePageSelect = (index: number) => {
+    setPageIndex(index)
+  }
 
   return (
     <div className='releases'>
@@ -39,7 +42,18 @@ const ReleasesCategory = () => {
         <main>
           <div className="container">
             <GoBack />
-            {releases.map(rel =>  <Accordion key={rel.id} title={rel.name} desc={rel.body.replaceAll('\r\n', '<br />')} /> )}
+            <div className='pagination'>
+              <ButtonText type='button' disabled={pageIndex === 0} onClick={() => handlePageChange(-1)}>{'<'}</ButtonText>
+              <div className='pages-numbers'>
+                {Array(totalPages).fill(0).map((p, i) => {
+                  return <ButtonText onClick={() => handlePageSelect(i)} disabled={i === pageIndex} type='button' key={'pb-' + i }>{i + 1}</ButtonText>
+                })}
+              </div>
+              <ButtonText type='button' disabled={pageIndex === totalPages - 1} onClick={() => handlePageChange(+1)}>{'>'}</ButtonText>
+            </div>
+              {releases[categoryInfo?.name ?? 'public'].slice(0 + (pageIndex * perPage), perPage * (pageIndex + 1)).map(rel => {
+                return <Accordion usesMD githubURL={rel.html_url} key={rel.id} title={rel.name} desc={rel.body} />
+              })}
           </div>
         </main>
       </div>

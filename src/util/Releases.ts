@@ -1,4 +1,7 @@
-export const ReleasesCategories = [
+export const ReleasesCategories: { name: 'public' | 'beta';
+  title: string;
+  description: string;
+  img: string; }[] = [
   { 
     name: 'public',
     title: 'Public Releases',
