@@ -27,6 +27,7 @@
     color: white;
     word-spacing: 5px;
     font-size: 1.1rem;
+    line-height: 1.5rem;
     width: 85%;
     font-weight: 100;
     font-style: normal;
@@ -53,16 +54,22 @@
     column-gap: 1rem;
     padding: 1.2rem 0 0 0;
   }
+}
 
+.arrow-scroll {
+  position: absolute;
+  bottom: 3rem;
+
+  svg {
+    width: 40px;
+    height: 40px;
+    animation: scrollArrowAnim 1000ms infinite ease;
+  }
+}
+
+@media screen and (max-height: 700px) and (max-width: 400px) {
   .arrow-scroll {
-    position: absolute;
-    bottom: 4rem;
-
-    svg {
-      width: 40px;
-      height: 40px;
-      animation: scrollArrowAnim 1000ms infinite ease;
-    }
+    display: none;
   }
 }
 

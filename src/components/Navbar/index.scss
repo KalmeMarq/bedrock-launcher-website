@@ -14,39 +14,6 @@
     justify-content: space-between;
   }
 
-  .nav-logo {
-    width: max-content;
-    height: 40px;
-
-    img {
-      width: 40px;
-      height: 40px;
-      margin: 0 1rem 0 0;
-    }
-
-    color: white;
-    text-decoration: none;
-    font-family: 'Minecraft';
-    display: flex;
-    flex-direction: row;
-    text-align: left;
-    text-anchor: start;
-    place-content: center;
-    font-size: 1.1rem;
-    place-items: center;
-    font-weight: 100;
-    font-style: normal;
-
-    &:hover {
-      color: rgb(190, 190, 190);
-    }
-
-     &:focus-visible {
-      outline: none;
-      text-decoration: underline;
-    }
-  }
-
   .header-nav {
     height: 100%;
 
@@ -56,6 +23,39 @@
       flex-direction: row;
       height: 100%;
     }
+  }
+}
+
+.nav-logo {
+  width: max-content;
+  height: 40px;
+
+  img {
+    width: 40px;
+    height: 40px;
+    margin: 0 1rem 0 0;
+  }
+
+  color: white;
+  text-decoration: none;
+  font-family: 'Minecraft';
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  text-anchor: start;
+  place-content: center;
+  font-size: 1.1rem;
+  place-items: center;
+  font-weight: 100;
+  font-style: normal;
+
+  &:hover {
+    color: rgb(190, 190, 190);
+  }
+
+   &:focus-visible {
+    outline: none;
+    text-decoration: underline;
   }
 }
 
@@ -284,6 +284,12 @@
 
 .hamburger-btn {
   display: none;
+}
+
+@media screen and (max-width: 450px) {
+  .nav-logo {
+    font-size: 0;
+  }
 }
 
 @media screen and (max-width: 850px) {
